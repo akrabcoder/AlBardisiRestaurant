@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مطعم ومسمط البرديسي | Al-Bardisi Restaurant</title>
+<meta name="description" content="مطعم ومسمط البرديسي: كوارع وكرشة وممبار وأكل مصري أصيل. اطلب أونلاين على واتساب.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍲</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Aref+Ruqaa:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#17110d;--pot:#241a14;--brass:#d29a3c;--chili:#b8321f;--bone:#f3ead8;--mute:#b8a98f}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:Cairo,Tahoma,sans-serif;background:var(--ink);color:var(--bone);line-height:1.8;padding-bottom:4.5rem}
+h1,h2{font-family:'Aref Ruqaa',Cairo,serif;font-weight:700}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+nav{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.5rem 1rem;background:var(--pot);border-bottom:2px solid var(--brass)}
+nav b{font-family:'Aref Ruqaa';font-size:1.4rem;color:var(--brass)}
+nav a{text-decoration:none;margin-inline:.4rem;font-size:.92rem}
+button{font:inherit;cursor:pointer}
+.lang{border:1px solid var(--brass);background:none;color:var(--brass);padding:.1rem .8rem;border-radius:99px}
+.hero{padding:4rem 1.2rem 3rem;text-align:center;background:radial-gradient(ellipse at 50% 0,#4a2a14,var(--ink) 70%)}
+.hero h1{font-size:clamp(3rem,13vw,6.5rem);line-height:1.1;color:var(--brass)}
+.hero p{max-width:32rem;margin:1rem auto 1.5rem;color:var(--bone)}
+.btn{display:inline-block;border:0;background:var(--chili);color:#fff;padding:.6rem 1.6rem;border-radius:8px;text-decoration:none;font-weight:700}
+section{padding:3rem 1rem;max-width:60rem;margin:auto}
+h2{font-size:2.2rem;color:var(--brass);margin-bottom:1rem}
+.menu{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.item{background:var(--pot);border:1px solid #3a2b20;border-radius:10px;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.3rem}
+.item h3{font-size:1.1rem}
+.item p{color:var(--mute);font-size:.9rem;line-height:1.5}
+.qty{display:flex;align-items:center;gap:.7rem;margin-top:.4rem}
+.qty button{width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid var(--brass);background:none;color:var(--brass);font-size:1.2rem}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:.6rem}
+.gal img{width:100%;max-width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;background:var(--pot)}
+form{display:grid;gap:.6rem;max-width:30rem}
+input,textarea{font:inherit;padding:.6rem;border-radius:8px;border:1px solid #3a2b20;background:var(--pot);color:var(--bone)}
+#bar{position:fixed;inset-inline:0;bottom:0;padding:.6rem 1rem calc(.6rem + env(safe-area-inset-bottom,0px));background:var(--brass);color:var(--ink);display:none;justify-content:space-between;align-items:center;font-weight:700;z-index:6}
+#bar button{background:var(--ink);color:var(--brass);border:0;padding:.4rem 1.2rem;border-radius:8px;font-weight:700}
+footer{text-align:center;padding:1.5rem;color:var(--mute);font-size:.9rem}
+</style>
+</head>
+<body>
+<nav>
+  <b id="brand"></b>
+  <div><a href="#menu" data-t="nMenu"></a><a href="#gallery" data-t="nGal"></a><a href="#order" data-t="nOrd"></a><a href="#contact" data-t="nCon"></a>
+  <button class="lang" id="lang" type="button">English</button></div>
+</nav>
+
+<header class="hero">
+  <h1 id="h1"></h1>
+  <p data-t="tag"></p>
+  <a class="btn" href="#menu" data-t="cta"></a>
+</header>
+
+<section id="menu"><h2 data-t="nMenu"></h2><div class="menu" id="menuList"></div></section>
+
+<section id="gallery"><h2 data-t="nGal"></h2>
+  <div class="gal">
+    <img loading="lazy" src="images/1.jpg" alt="" onerror="this.style.visibility='hidden'">
+    <img loading="lazy" src="images/2.jpg" alt="" onerror="this.style.visibility='hidden'">
+    <img loading="lazy" src="images/3.jpg" alt="" onerror="this.style.visibility='hidden'">
+    <img loading="lazy" src="images/4.jpg" alt="" onerror="this.style.visibility='hidden'">
+  </div>
+</section>
+
+<section id="order"><h2 data-t="nOrd"></h2>
+  <p data-t="ordHint" style="margin-bottom:1rem;color:var(--mute)"></p>
+  <form id="f">
+    <input id="nm" required data-ph="name" autocomplete="name">
+    <input id="ph" required data-ph="phone" inputmode="tel" autocomplete="tel">
+    <textarea id="ad" rows="2" data-ph="addr" autocomplete="street-address"></textarea>
+    <button class="btn" type="submit" data-t="send"></button>
+  </form>
+  <p id="msg" style="margin-top:.8rem;color:var(--brass)"></p>
+</section>
+
+<section id="contact"><h2 data-t="nCon"></h2>
+  <p data-t="where"></p>
+  <p style="margin-top:.8rem"><a class="btn" id="map" target="_blank" rel="noopener" data-t="openMap"></a>
+  <a class="btn" id="call" style="background:var(--pot);border:1px solid var(--brass)" data-t="call"></a></p>
+</section>
+
+<footer>© <span id="y"></span> <span id="ft"></span></footer>
+
+<div id="bar"><span id="sum"></span><button type="button" onclick="document.getElementById('order').scrollIntoView()" data-t="checkout"></button></div>
+
+<script>
+/* ===== عدّل هنا ===== */
+var PHONE="20XXXXXXXXXX";           // رقم واتساب بالصيغة الدولية بدون + (مثال: 201012345678)
+var MAPS="https://maps.google.com/?q=مطعم+ومسمط+البرديسي";  // حط لينك الخريطة الحقيقي
+/* ==================== */
+var T={
+ ar:{brand:"البرديسي",h1:"مسمط البرديسي",tag:"كوارع وكرشة وممبار على أصولها، بطبخ بطيء ونَفَس مصري أصيل.",cta:"شوف المنيو",nMenu:"المنيو",nGal:"الصور",nOrd:"اطلب أونلاين",nCon:"تواصل معنا",
+  ordHint:"اختار أصنافك من المنيو، اكتب بياناتك، وهيوصلنا طلبك على واتساب.",send:"ابعت الطلب على واتساب",where:"العنوان والموقع على خريطة جوجل.",openMap:"افتح الخريطة",call:"اتصل بنا",
+  checkout:"إتمام الطلب",items:"صنف",name:"الاسم",phone:"رقم التليفون",addr:"العنوان (للتوصيل)",empty:"اختار صنف واحد على الأقل.",ft:"مطعم ومسمط البرديسي",hello:"طلب جديد من الموقع"},
+ en:{brand:"Al-Bardisi",h1:"Al-Bardisi Mosamat",tag:"Slow-cooked trotters, tripe and mombar, the traditional Egyptian way.",cta:"See the menu",nMenu:"Menu",nGal:"Gallery",nOrd:"Order online",nCon:"Contact",
+  ordHint:"Pick your items from the menu, add your details, and your order reaches us on WhatsApp.",send:"Send order on WhatsApp",where:"Find us on Google Maps.",openMap:"Open map",call:"Call us",
+  checkout:"Checkout",items:"items",name:"Name",phone:"Phone number",addr:"Address (for delivery)",empty:"Choose at least one item.",ft:"Al-Bardisi Restaurant",hello:"New order from the website"}
+};
+var M=[
+ {id:"k",ar:"كوارع",en:"Trotters (Kawarea)",da:"مسلوقة ببطء مع البهارات والتقلية",de:"Slow-simmered with spices"},
+ {id:"s",ar:"كرشة",en:"Tripe",da:"مغسولة ومتبلة بالكمون والتوم",de:"Cleaned and seasoned with cumin and garlic"},
+ {id:"m",ar:"ممبار",en:"Mombar",da:"محشي بالأرز والتتبيلة",de:"Stuffed with spiced rice"},
+ {id:"f",ar:"فتة مسمط",en:"Fatta Mosamat",da:"أرز وعيش وخل وتوم مع اللحمة",de:"Rice, bread, garlic vinegar and meat"},
+ {id:"l",ar:"لسان",en:"Tongue",da:"طري ومسلوق بالورق والبهارات",de:"Tender, boiled with bay and spices"},
+ {id:"r",ar:"شوربة كوارع",en:"Trotter soup",da:"شوربة ساخنة بالتقلية",de:"Hot broth with garlic dressing"}
+];
+var lang="ar",cart={};
+var $=function(i){return document.getElementById(i)};
+function t(k){return T[lang][k]}
+function render(){
+ document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ $("lang").textContent=lang==="ar"?"English":"العربية";
+ $("brand").textContent=t("brand");$("h1").textContent=t("h1");$("ft").textContent=t("ft");
+ document.querySelectorAll("[data-t]").forEach(function(e){e.textContent=t(e.dataset.t)});
+ document.querySelectorAll("[data-ph]").forEach(function(e){e.placeholder=t(e.dataset.ph)});
+ $("menuList").innerHTML=M.map(function(x){var q=cart[x.id]||0;
+  return '<div class="item"><h3>'+x[lang]+'</h3><p>'+x[lang==="ar"?"da":"de"]+'</p><div class="qty"><button type="button" aria-label="-" data-a="-" data-i="'+x.id+'">−</button><b>'+q+'</b><button type="button" aria-label="+" data-a="+" data-i="'+x.id+'">+</button></div></div>'}).join("");
+ var n=0;for(var k in cart)n+=cart[k];
+ $("bar").style.display=n?"flex":"none";$("sum").textContent=n+" "+t("items");
+}
+$("menuList").onclick=function(e){var b=e.target.closest("button");if(!b)return;var i=b.dataset.i;cart[i]=Math.max(0,(cart[i]||0)+(b.dataset.a==="+"?1:-1));render()};
+$("lang").onclick=function(){lang=lang==="ar"?"en":"ar";render()};
+$("f").onsubmit=function(e){e.preventDefault();
+ var lines=M.filter(function(x){return cart[x.id]}).map(function(x){return "• "+x[lang]+" × "+cart[x.id]});
+ if(!lines.length){$("msg").textContent=t("empty");return}
+ var txt=t("hello")+"\n"+lines.join("\n")+"\n"+t("name")+": "+$("nm").value+"\n"+t("phone")+": "+$("ph").value+"\n"+t("addr")+": "+$("ad").value;
+ window.open("https://wa.me/"+PHONE+"?text="+encodeURIComponent(txt),"_blank");
+};
+$("map").href=MAPS;$("call").href="tel:+"+PHONE;$("y").textContent=new Date().getFullYear();
+render();
+</script>
+</body>
+</html>
